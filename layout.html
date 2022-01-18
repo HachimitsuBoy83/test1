@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/js/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../static/js/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/top.css">
+</head>
+
+    <title>タイトル</title>
+    
+    <body>
+ 
+        <header id="header">
+            <div class="logo"><a href="/"><img src="../static/img/logo.png" alt="ロゴ"></a></div>
+            <nav class="a">
+                <ul class="c">
+                    <li><a href="{{url_for('ranking')}}">ランキング</a></li>
+                    <li><a href="{{url_for('genre')}}">ジャンル</a></li>
+                    <li><a href="{{url_for('geolocation')}}">周辺の店</a></li>
+                    <li><a href="{{url_for('shiborikomi')}}">絞り込み</a></li>    
+                </ul>
+            </nav>
+
+        </header>
+        
+        <main>
+            {% block content %}
+            <!-- ページごとにコンテンツを埋め込む -->
+            {% endblock %}
+        </main>
+
+        <footer id="footer">
+            <h1>Logo</h1>
+
+            <nav id="footer">
+                <div id="footer">
+                    <ul>
+                        <li><a href="{{url_for('ranking')}}">ランキング</a></li>  
+                        <li><a href="{{url_for('genre')}}">ジャンル</a></li>  
+                        <li><a href="{{url_for('geolocation')}}">周辺の店</a></li>
+                        <li><a href="{{url_for('shiborikomi')}}">絞り込み</a></li>    
+                    </ul>
+                </div>
+            </nav>
+
+            <small>&copy; copyright.</small>
+        </footer>
+
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/a.js"></script>
+
+    
+</body>
+</html>

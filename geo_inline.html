@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/css/geolocation.css">
+        <link rel="stylesheet" type="text/css" href="static/css/top.css">
+
+    </head>
+    <body background="back.png">
+        <header id="header">
+            <div class="logo"><a href="index.html"><img src="static/img/logo.png" alt="ロゴ"></a></div>
+            <nav class="a">
+                <ul class="c">
+                    <li><a href="ranking2.html">ランキング</a></li>
+                    <li><a href="janru.html">ジャンル</a></li>
+                    <li><a href="geo_inline.html">周辺の店</a></li>
+                    <li><a href="shibori.html">絞り込み</a></li>    
+                </ul>
+            </nav>
+
+        </header>
+
+        <div id="banner">
+            <img src="static/img/geo2.png" alt="画像1">
+        </div>
+
+        <div id="intro2">
+            <h1>位置情報で検索</h1>
+        </div>
+
+        <div class="button">
+            <button class="radius" onclick="search()">位置情報で検索</button>
+        </div>
+
+
+        <script>
+            function search() {
+                navigator.geolocation.getCurrentPosition(search2);
+            }
+        
+            function search2(position) {
+                //掲載場所と緯度経度のリスト(本番環境ではリストに4番目の要素としてローマ字URLを入れる)
+                let location = [
+                    ['カプチーノ詩季',39.70248251435912, 141.13836529766849,"kaputino","～￥999","盛岡市駅前下通１０−６","南昌壮.jpg"],
+                    ['光原社 可否館', 39.706169252038315, 141.13794714703604,"kougensya","～￥999","盛岡市材木町２−１８","dbz.jpg"],
+                    ['チーズケーキのチロル 大通店', 39.70276734933744, 141.1481105688323,"tiroru","～￥999","盛岡市大通１丁目１０−２１","パフェ.jpg"],
+                    ['ねるどりっぷ珈琲 機屋 カワトク店',39.702466005427965, 141.13836529766849,"nerudorippu","～￥999","盛岡市菜園１丁目１０−10 B1","南昌壮.jpg"],
+                    ['NAGASAWA COFFEE',39.71366055479661, 141.14355706946807,"nagasawa","￥1,000～￥1,999","盛岡市上田１丁目１１−２３","南昌壮.jpg"],
+                    ['和カフェ茶囲家',39.742529174335075, 141.1159602541246,"saike","￥1,000～￥1,999","盛岡市みたけ３丁目３８−３３","南昌壮.jpg"],
+                    ['羅針盤',39.700487926538926, 141.156196000156,"rasinban","～￥999","盛岡市中ノ橋通１丁目４−１５","南昌壮.jpg"],
+                    ['茶廊 車門',39.699108567244814, 141.15532335412385,"tyarou","～￥999","盛岡市肴町５−７","南昌壮.jpg"],
+                    ['ティーハウス リーベ',39.702304532894104, 141.15180620994383,"ribe","～￥999","盛岡市内丸５−３","南昌壮.jpg"],
+                    ['喫茶ふかくさ',39.701377880824616, 141.15506504063188,"hukakusa","～￥999","盛岡市紺屋町１−２","南昌壮.jpg"],
+                    ['クラムボン',39.70391524753632, 141.15669923437244,"kuramubon","～￥999","盛岡市紺屋町５−３３","南昌壮.jpg"],
+                    ['六月の鹿',39.70231648337075, 141.15186485032834,"rokugatsu","～￥999","盛岡市内丸５−５","南昌壮.jpg"],
+                    ['イワテテトテト',39.70185710762401, 141.13604458030795,"iwatetetoteto","～￥999","盛岡市盛岡駅前通１丁目１ JR盛岡駅 2F","南昌壮.jpg"],
+                    ['よりどこ',39.698861987865726, 141.1562357125814,"yoridoko","￥1,000～￥1,999","盛岡市南大通１丁目１−２３","南昌壮.jpg"],
+                    ['SweetsCafeしゅくる',39.70802287863804, 141.154905269468,"syukuru","～￥999","盛岡市本町通１丁目５−１３","南昌壮.jpg"],
+                    ['パンプルムゥス',39.7034366666641, 141.1452088387797,"mousse","～￥999","盛岡市大通２丁目７−２０ ウエダビル 2F","南昌壮.jpg"],
+                    ['パァク',39.70220132403901, 141.15222381251917,"palaku","～￥999","盛岡市内丸４−６","南昌壮.jpg"],
+                    ['ROB PHOTONS',39.70401663939024, 141.1477427971783,"robphotons","￥2,000～￥2,999","盛岡市中央通１丁目９−１１ CUBE映画館通りビル B1","南昌壮.jpg"],
+                    ['盛岡八幡宮',39.69554790670067, 141.16394123766074,"hachimangu","¥不明","盛岡市八幡町１３−１","南昌壮.jpg"],
+                    ['盛岡城跡公園',39.700785082285684, 141.1514664432011,"jouseki","¥不明","盛岡市内丸１−１−３７","南昌壮.jpg"],
+                    ['岩手銀行赤レンガ館',39.70070933718373, 141.1552146971782,"akarenga","¥不明","盛岡市中ノ橋通１丁目２−２０","南昌壮.jpg"],
+                    ['高松の池',39.72293091991469, 141.1444844953322,"takamatsu","¥不明","盛岡市高松１丁目２６−１","南昌壮.jpg"],
+                    ['報恩寺五百羅漢',39.712417358267516, 141.15597547999084,"houonji","¥不明","盛岡市名須川町３１","南昌壮.jpg"],
+                    ['櫻山神社',39.70178993421084, 141.1518762432013,"sakurayama","¥不明","盛岡市内丸１−４２","南昌壮.jpg"],
+                    ['もりおか歴史文化館',39.70112749998592, 141.1526994971782,"historyhall","¥不明","盛岡市内丸１−５０","南昌壮.jpg"],
+                    ['ふくろうカフェRicky',39.7034065404121, 141.14418308183735,"owlcafe","¥不明","盛岡市大通り３丁目１−２３ クリエイトビル地下","南昌壮.jpg"],
+                    ['南昌荘',39.69574451672659, 141.14874438368386,"nanshoso","¥不明","盛岡市清水町１３−４６","南昌壮.jpg"],
+                    ['志波城古代公園',39.682795940798236, 141.10458671067184,"shiwajyo","¥不明","盛岡市上鹿妻五兵エ新田４７−１１","南昌壮.jpg"],
+                ];
+            
+                const R = Math.PI / 180;
+                for (let i = 0; i < location.length; i++) {
+                    const R = Math.PI / 180;
+                
+                    //ユーザーの現在地取得
+                    lat1 = position.coords.latitude *= R;
+                    lng1 = position.coords.longitude *= R;
+                
+                    //リストをループで回す
+                    lat2 = location[i][1];
+                    lat2 *= R;
+                
+                    lng2 = location[i][2];
+                    lng2 *= R;
+
+                    let name = location[i][0]
+                    let url_name = location[i][3]
+                    let plice = location[i][4]
+                    let detail = location[i][5]
+                    let img = location[i][6]
+
+                
+                    result = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));
+                
+                    //5km以内で絞り込み
+                    if(result <= 2){
+                        var area = document.getElementById("area");
+                        area.insertAdjacentHTML("beforebegin", "<div class='grid-item'><img src=static/img/"+img+" class='img'>" + "<br>\n" + "<h1>"+name+"</h1><h2>料金:"+plice+"　約"+ Math.round(result * 10) / 10 +"km</h2>" + "<br>\n" + "<a>"+detail+"</a>" + "<br>\n" + "<a href="+url_name+".html>view more</a></div>");
+                    }
+                }
+            }
+        
+        </script>
+
+        <br>
+
+        <div class="container"> 
+            <div id="area"></div>
+        </div>
+
+        <footer id="footer">
+            <h1>Logo</h1>
+
+            <nav id="footer">
+                <div id="footer">
+                    <ul>
+                        <li><a href="ranking2.html">ランキング</a></li>  
+                        <li><a href="janru.html">ジャンル</a></li>  
+                        <li><a href="geo_inline.html">周辺の店</a></li>
+                        <li><a href="shibori.html">絞り込み</a></li>    
+                    </ul>
+                </div>
+            </nav>
+
+            <small>&copy; copyright.</small>
+        </footer>
+
+    </body>
+</html>

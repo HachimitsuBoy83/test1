@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/search.css">
+    <link rel="stylesheet" type="text/css" href="static/css/top.css">
+
+    <title>Document</title>
+</head>
+<body background="static/img/back.png">
+    <header id="header">
+        <div class="logo"><a href="index.html"><img src="static/img/logo.png" alt="ロゴ"></a></div>
+        <nav class="a">
+            <ul class="c">
+                <li><a href="ranking2.html">ランキング</a></li>
+                <li><a href="janru.html">ジャンル</a></li>
+                <li><a href="geo_inline.html">周辺の店</a></li>
+                <li><a href="shibori.html">絞り込み</a></li>    
+            </ul>
+        </nav>
+
+    </header>
+
+    <div id="banner">
+        <img src="static/img/パフェ白.png" alt="画像1">
+    </div>
+
+    <div id="intro2">
+        <h1>施設</h1>
+    </div>
+
+    <script>
+        function search_res() {
+            //0.名前 1.URL 2.料金 3.住所 4.画像名
+            let spotlist = [
+                ['もりおか歴史文化館',"historyhall","¥不明","盛岡市内丸１−５０","南昌壮.jpg"],
+                ['ふくろうカフェRicky',"owlcafe","¥不明","盛岡市大通り３丁目１−２３ クリエイトビル地下","南昌壮.jpg"],
+                ['南昌荘',"nanshoso","¥不明","盛岡市清水町１３−４６","南昌壮.jpg"],
+                ['志波城古代公園',"shiwajyo","¥不明","盛岡市上鹿妻五兵エ新田４７−１１","南昌壮.jpg"],
+            ];
+
+            for (let i = 0; i < spotlist.length; i++) {
+                let name = spotlist[i][0]
+                let url_name = spotlist[i][1]
+                let plice = spotlist[i][2]
+                let detail = spotlist[i][3]
+                let img = spotlist[i][4]
+
+                var area = document.getElementById("area");
+                area.insertAdjacentHTML("beforebegin", "<div class='grid-item'><img src=static/img/"+img+" class='img'>" + "<br>\n" + "<h1>"+name+"</h1><h2>料金："+plice+"</h2>" + "<br>\n" + "<a>"+detail+"</a>" + "<br>\n" + "<a href= "+url_name+".html>view more</a></div>");
+            }
+        }
+
+        window.onload = search_res;
+    </script>
+
+    <div class="container">
+        <div id="area"></div>
+    </div>
+
+    <nav id="footer">
+        <div id="footer">
+            <ul>
+                <li><a href="ranking2.html">ランキング</a></li>  
+                <li><a href="janru.html">ジャンル</a></li>  
+                <li><a href="geo_inline.html">周辺の店</a></li>
+                <li><a href="shibori.html">絞り込み</a></li>    
+            </ul>
+        </div>
+    </nav>
+
+</body>
+</html>
