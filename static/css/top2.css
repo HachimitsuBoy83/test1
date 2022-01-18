@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'myfont';
+    src: url('../css/FUTENEmiddle.ttf') format('furtene');
+}
+
+.logo {
+    float: left;
+    margin: 15px 10px 5px 5px;
+}
+
+.logo img {
+    width: 70px;
+}
+
+#header {
+    /*固定*/
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 95px;
+    background-color: rgba(47, 27, 173, 0.7);
+}
+
+.c li {
+
+    font-family: 'myfont', futene;
+    font-weight: bold;
+    width: 140px;
+    text-align: center;
+    float: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+.c a {
+    color: white;
+}
+
+#nav {
+    display: flex;
+    padding: 20px;
+    margin: auto;
+    list-style: none;
+    color: white;
+    list-style: none;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 50px;
+}
+
+#nav li {
+    width: 200px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'myfont', futene;
+    font-size: 30px;
+}
+
+li a:hover {
+    color: #EFFE92;
+    border-bottom: 2px solid #EFFE92;
+}
+
+.square {
+    position: absolute;
+    max-width: 300px;
+    background: #ffb6c1;
+}
+
+.slick1 img {
+    width: 100%;
+    height: 60vw;
+    /*margin: auto;*/
+    opacity: 0.9;
+    background-position: center;
+    object-fit: cover;
+    position: relative;
+}
+
+/*.slick-dots{
+    bottom: -20px!important;
+}*/
+
+.intro {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    color: black;
+    /*文字を白に*/
+    background-color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+    /*太字に*/
+    font-size: 1.5em;
+    /*サイズ2倍*/
+    font-family: 'UD デジタル 教科書体 NP-B';
+    /*Google Font*/
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    /*文字の装飾は省略*/
+
+}
+
+
+
+
+@media screen and (max-width: 640px) {
+    #nav li a{
+        height: 50px;
+        display: none;
+        /*非表示*/
+    }
+    
+    .intro {
+        font-size: 15px;
+    }
+    
+    .logo{
+        position: absolute;
+        left: 42%;
+    }
+
+}
